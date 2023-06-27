@@ -3,16 +3,21 @@ import pandas as pd
 import plotly.express as px
 # Saisie du nom de l'utilisateur
 user_name = st.text_input("Entrez votre nom et prénom")
-
-# Vérifie si le bouton a été cliqué
+# Saisie des centres d'intérêt
+interests = st.text_area("quel est votre centre d'intérêt ?")
 if st.button("Salutation"):
     # Affichage du message de salutation
     if user_name:
-        # Enregistrement du nom dans un fichier texte
-        with open("recuperer_nom.txt", "a") as file:
-            file.write(user_name + "\n")
-        st.write(f"Bonjour {user_name} ! merci pour votre analyse ")
-        st.write("je suis un model qui a été fabriquer par Mr.DJEGUI-WAGUÉ")
+       interests_list = interests.split("\n")
+       for interest in interests_list:
+           st.write(f"Bonjour {user_name} ! merci pour votre analyse. ")
+           st.write("je suis un model qui a été fabriquer par Mr.DJEGUI-WAGUÉ.")
+           st.write("Votre centre d'intérê est :")
+           st.write("- ", interest)
+           st.write("")
+           st.write("vous êtes la bienvenu(e)",user_name,"!", "vous pouvez continuez à analyser votre base de données dès maintenant ! ")
+
+
     else:
         st.write("Veuillez entrer votre nom.")
 st.write("AUTEUR : Mr.DJEGUI-WAGUÉ")
