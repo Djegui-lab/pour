@@ -10,7 +10,10 @@ uploaded_file = st.file_uploader('Choisir un fichier XLSX ', type='xlsx')
 if uploaded_file:
     st.markdown('---')
     df = pd.read_excel(uploaded_file, engine='openpyxl')
+    st.title('votre tableau a été telecharger avec succes :')
     st.dataframe(df)
+    st.title('ANALYSE DESCRIPTIVE :')
+    st.write(df.describe())
 
     groupby_column = st.selectbox(
         "Qu'aimeriez-vous analyser ?",
