@@ -33,17 +33,3 @@ if uploaded_file:
     st.plotly_chart(fig)
 
 
-def load_data():
-    df = pd.read_excel('C:/Users/HP/Desktop/firs_commit/nex_data_assurance.xlsx')
-    return df
-df =load_data()
-df_sample= df.sample(30)
-df_describe= df_sample.describe()
-if st.sidebar.checkbox("AFFICHER LES DONNEES BRUTE" ,False):
-   st.subheader("Jeu de données assurance auto : Échantillon de 90 observations ")
-   st.write(df_sample)
-if st.sidebar.checkbox(" AFFICHER LA DESCRIPTION ", False):
-   st.subheader( "analyse descriptive de l'ensemble des données")
-   st.write(df_describe)
-   st.bar_chart(df["Age_du_conducteur"])
-   st.line_chart(df["Annees_assurance"])
