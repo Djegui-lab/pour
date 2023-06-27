@@ -8,6 +8,9 @@ user_name = st.text_input("Entrez votre nom et prénom")
 if st.button("Salutation"):
     # Affichage du message de salutation
     if user_name:
+        # Enregistrement du nom dans un fichier texte
+        with open("recuperer_nom.txt", "a") as file:
+            file.write(user_name + "\n")
         st.write(f"Bonjour {user_name} ! merci pour votre analyse ")
         st.write("je suis un model qui a été fabriquer par Mr.DJEGUI-WAGUÉ")
     else:
