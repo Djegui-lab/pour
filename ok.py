@@ -11,9 +11,13 @@ if uploaded_file:
     st.markdown('---')
     df = pd.read_excel(uploaded_file, engine='openpyxl')
     st.title('votre tableau a été telecharger avec succes :')
+    statist=df["Age_du_conducteur"]
     st.dataframe(df)
     st.title('ANALYSE DESCRIPTIVE :')
     st.write(df.describe())
+    st.title('diagramme à bandes pour age :')
+    st.bar_chart(statist)
+
 
     groupby_column = st.selectbox(
         "Qu'aimeriez-vous analyser ?",
