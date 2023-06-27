@@ -25,13 +25,15 @@ if uploaded_file:
     st.dataframe(df)
     st.title('ANALYSE DESCRIPTIVE :')
     st.write(df.describe())
+    st.write(f" {user_name}  VOUS ETES FORMIDABLE!  ")
+
     st.title('diagramme à bandes pour age :')
     st.bar_chart(statist)
 
 
     groupby_column = st.selectbox(
         "Qu'aimeriez-vous analyser ?",
-        ('Nombre_de_sinistres', 'Age_du_conducteur', 'Puissance_fiscale', 'Annees_assurance','Date_de_permis','annee_de_mise _en_circulation'),
+        ('Nombre_de_sinistres', 'Age_du_conducteur', 'Puissance_fiscale', 'Annees_assurance','Date_de_permis','annee_circulation'),
     )
     # -- GROUP DATAFRAME
     output_columns = ['Annees_assurance', 'Age_du_conducteur']
