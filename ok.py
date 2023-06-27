@@ -1,7 +1,17 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+# Saisie du nom de l'utilisateur
+user_name = st.text_input("Entrez votre nom et prénom")
 
+# Vérifie si le bouton a été cliqué
+if st.button("Salutation"):
+    # Affichage du message de salutation
+    if user_name:
+        st.write(f"Bonjour {user_name} ! merci pour votre analyse ")
+        st.write("je suis un model qui a été fabriquer par Mr.DJEGUI-WAGUÉ")
+    else:
+        st.write("Veuillez entrer votre nom.")
 st.write("AUTEUR : Mr.DJEGUI-WAGUÉ")
 st.title('VISUALISATION')
 st.subheader("merci pour votre analyse")
