@@ -34,7 +34,7 @@ if uploaded_file:
 
 
 def load_data():
-    df = pd.read_excel('C:/Users/HP/Music/nex_data_assurance.xlsx')
+    df = pd.read_excel('C:/Users/HP/Desktop/firs_commit/nex_data_assurance.xlsx')
     return df
 df =load_data()
 df_sample= df.sample(30)
