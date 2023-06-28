@@ -74,10 +74,17 @@ df = pd.read_sql_query('SELECT * FROM nex_data_assurance', conn)
 
 # Afficher les données dans l'interface utilisateur
 st.write("base de données pour ",user_name,".")
-st.title("votre base de données a l'etat brute")
+st.title("votre base de données a l'etat brute:")
 st.dataframe(df)
-st.title(" statistique descriptive de votre base de données")
+st.title(" statistique descriptive de votre base de données :")
 st.dataframe(df.describe())
-st.write("merci pour votre visite", user_name,"!")
 
+df_describe=df.describe()
+if st.sidebar.checkbox(" AFFICHER LES DIAGRAMMES ET GRAPHIQUES ", False):
+   st.subheader( "analyse diagramme a bandes pour Age_conducteur :")
+   st.bar_chart(df["Age_du_conducteur"])
+   st.subheader( "analyse graphique en ligne (puissance_fiscale) :")
+   st.line_chart(df["Puissance_fiscale"])
+
+st.write("merci pour votre visite", user_name,"!")
 
