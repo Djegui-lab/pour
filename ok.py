@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import sqlite3
 # Saisie du nom de l'utilisateur
 user_name = st.text_input("Entrez votre nom et prénom")
 # Saisie des centres d'intérêt
@@ -58,5 +59,16 @@ if uploaded_file:
         title=f'<b>age du conducteur & année assurance by {groupby_column}</b>'
     )
     st.plotly_chart(fig)
+
+# Connexion à la base de données SQLite distante
+conn = sqlite3.connect('nex_data_assurance.db')
+
+# Charger les données dans un DataFrame
+df = pd.read_sql_query('SELECT * FROM nex_data_assurance', conn)
+
+# Afficher les données dans l'interface utilisateur
+st.dataframe(df)
+st.dataframe(df.describe())
+
 
 
