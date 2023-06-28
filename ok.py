@@ -74,6 +74,7 @@ df = pd.read_sql_query('SELECT * FROM nex_data_assurance', conn)
 
 # Afficher les données dans l'interface utilisateur
 st.write("base de données pour ",user_name,".")
+st.title("votre base de données a l'etat brute")
 st.dataframe(df)
 st.title(" statistique descriptive de votre base de données")
 st.dataframe(df.describe())
