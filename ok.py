@@ -59,6 +59,12 @@ if uploaded_file:
         title=f'<b>age du conducteur & année assurance by {groupby_column}</b>'
     )
     st.plotly_chart(fig)
+st.write("")
+
+st.write("")
+
+
+st.write("Rebonjour encore",user_name,"!","","permettez moi de vous presentez une base de données :")
 
 # Connexion à la base de données SQLite distante
 conn = sqlite3.connect('nex_data_assurance.db')
@@ -67,8 +73,10 @@ conn = sqlite3.connect('nex_data_assurance.db')
 df = pd.read_sql_query('SELECT * FROM nex_data_assurance', conn)
 
 # Afficher les données dans l'interface utilisateur
+st.write("base de données pour ",user_name,".")
 st.dataframe(df)
+st.title(" statistique descriptive de votre base de données")
 st.dataframe(df.describe())
-
+st.write("merci pour votre visite", user_name,"!")
 
 
