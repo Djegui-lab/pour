@@ -68,16 +68,19 @@ st.write("Rebonjour encore",user_name,"!","","permettez moi de vous presentez un
 
 # Connexion à la base de données SQLite distante
 conn = sqlite3.connect('nex_data_assurance.db')
-
+curseur=conn.cursor()
 # Charger les données dans un DataFrame
 df = pd.read_sql_query('SELECT * FROM nex_data_assurance', conn)
-
+conn.close()
+curseur.close()
 # Afficher les données dans l'interface utilisateur
 st.write("base de données pour ",user_name,".")
 st.title("votre base de données a l'etat brute:")
 st.dataframe(df)
 st.title(" statistique descriptive de votre base de données :")
 st.dataframe(df.describe())
+
+
 
 df_describe=df.describe()
 if st.sidebar.checkbox(" AFFICHER LES DIAGRAMMES ET GRAPHIQUES ", False):
