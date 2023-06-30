@@ -72,7 +72,6 @@ curseur=conn.cursor()
 # Charger les données dans un DataFrame
 df = pd.read_sql_query('SELECT * FROM nex_data_assurance', conn)
 conn.close()
-curseur.close()
 # Afficher les données dans l'interface utilisateur
 st.write("base de données pour ",user_name,".")
 st.title("votre base de données a l'etat brute:")
