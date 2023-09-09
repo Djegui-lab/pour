@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import sqlite3
+import seaborn as sns
+import matplotlib.pyplot as plt
+st.set_page_config(page_title='djégui', layout='wide')
+
 # Saisie du nom de l'utilisateur
 user_name = st.text_input("Entrez votre nom et prénom")
 # Saisie des centres d'intérêt
@@ -69,15 +73,25 @@ st.write("Rebonjour encore",user_name,"!","","permettez moi de vous presentez un
 # Connexion à la base de données SQLite distante
 conn = sqlite3.connect('nex_data_assurance.db')
 curseur=conn.cursor()
+
 # Charger les données dans un DataFrame
 df = pd.read_sql_query('SELECT * FROM nex_data_assurance', conn)
-conn.close()
+
 # Afficher les données dans l'interface utilisateur
 st.write("base de données pour ",user_name,".")
 st.title("votre base de données a l'etat brute:")
-st.dataframe(df)
+st.dataframe(df.head())
+# matrice de correlation
+correlation=df[["Age_du_conducteur","Nombre_de_sinistres","Annees_assurance","Date_de_permis"]].corr()
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation,annot=True, cmap='coolwarm',linewidths=0.1)
+st.title("Matrice de corellation :")
+st.subheader("age__Nombre_de_sinistres__Annees_assurance__Date_de_permis")
+st.pyplot(plt.gcf())
+
 st.title(" statistique descriptive de votre base de données :")
-st.dataframe(df.describe())
+st.dataframe(df.describe().style.background_gradient(cmap="Reds"))
 
 
 
@@ -90,3 +104,7 @@ if st.sidebar.checkbox(" AFFICHER LES DIAGRAMMES ET GRAPHIQUES ", False):
 
 st.write("merci pour votre visite", user_name,"!")
 
+
+ok=df[df["Age_du_conducteur"]<=35.57] [["Annees_assurance","Puissance_fiscale"]].std()
+st.dataframe(ok)
+conn.close()
